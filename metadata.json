@@ -1,0 +1,8 @@
+{
+  "name": "SMART GYM",
+  "description": "Landing page oficial da Smart Gym. Seu treino. Seu ritmo. Seu resultado. Agende sua aula experimental gratuita.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

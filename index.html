@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMART GYM | Seu treino. Seu ritmo. Seu resultado.</title>
+  <meta name="description" content="Academia moderna com estrutura completa, equipamentos profissionais e planos acessíveis. Agende sua aula experimental gratuita.">
+  <meta property="og:title" content="SMART GYM | Seu treino. Seu ritmo. Seu resultado.">
+  <meta property="og:description" content="Academia moderna com estrutura completa, equipamentos profissionais e planos acessíveis. Agende sua aula experimental gratuita.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Syne (Display) & Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              black: '#0B0B0B',
+              surface: '#121212',
+              card: '#161616',
+              border: '#232323',
+              neon: '#35FF63',
+              neonHover: '#2BD754',
+              gray: '#A0A0A0',
+              muted: '#6F6F6F'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            display: ['"Syne"', '"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Baseline styles & smooth interactions */
+    ::selection {
+      background-color: #35FF63;
+      color: #0B0B0B;
+    }
+    
+    .hero-gradient {
+      background: linear-gradient(
+        180deg,
+        rgba(11, 11, 11, 0.72) 0%,
+        rgba(11, 11, 11, 0.88) 60%,
+        #0B0B0B 100%
+      );
+    }
+
+    .card-hover {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body class="bg-brand-black text-white font-sans antialiased selection:bg-brand-neon selection:text-brand-black">
+
+  <!-- ================================================== -->
+  <!-- 1. HEADER (Fixed, Compact, Professional) -->
+  <!-- ================================================== -->
+  <header id="mainHeader" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-brand-black/80 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#inicio" class="flex items-center gap-2.5 group" aria-label="Ir para o início">
+        <span class="w-9 h-9 rounded-lg bg-brand-surface border border-white/10 flex items-center justify-center text-brand-neon transition-colors group-hover:border-brand-neon/40">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.4 14.4 9.6 9.6M18 8l-2-2M8 18l-2-2M20 10l-4-4M10 20l-4-4M17 13l4-4M11 19l4-4M7 3l4 4M3 7l4 4" />
+          </svg>
+        </span>
+        <span class="font-display font-extrabold text-xl tracking-wider uppercase text-white" data-config="ACADEMY_NAME">
+          SMART GYM
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray tracking-wide" aria-label="Navegação Principal">
+        <a href="#inicio" class="hover:text-white transition-colors">Início</a>
+        <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+        <a href="#modalidades" class="hover:text-white transition-colors">Modalidades</a>
+        <a href="#planos" class="hover:text-white transition-colors">Planos</a>
+        <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+      </nav>
+
+      <!-- Desktop Header CTA Button -->
+      <div class="hidden sm:flex items-center">
+        <a href="#" data-cta="header" class="inline-flex items-center justify-center bg-brand-neon hover:bg-brand-neonHover text-brand-black font-extrabold text-xs uppercase tracking-wider px-5 py-3 rounded-full transition-all duration-200">
+          Aula Experimental
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileToggle" class="md:hidden p-2 rounded-lg text-brand-gray hover:text-white hover:bg-brand-surface transition-colors" aria-label="Abrir menu de navegação" aria-expanded="false">
+        <svg id="menuIcon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileDrawer" class="hidden md:hidden bg-brand-surface border-b border-white/10 px-6 py-6 flex flex-col gap-4 text-left">
+      <nav class="flex flex-col gap-3 text-base font-semibold text-brand-gray" aria-label="Navegação Mobile">
+        <a href="#inicio" class="mobile-nav-link py-2 hover:text-white transition-colors">Início</a>
+        <a href="#sobre" class="mobile-nav-link py-2 hover:text-white transition-colors">Sobre</a>
+        <a href="#modalidades" class="mobile-nav-link py-2 hover:text-white transition-colors">Modalidades</a>
+        <a href="#planos" class="mobile-nav-link py-2 hover:text-white transition-colors">Planos</a>
+        <a href="#contato" class="mobile-nav-link py-2 hover:text-white transition-colors">Contato</a>
+      </nav>
+      <div class="pt-4 border-t border-white/5">
+        <a href="#" data-cta="header-mobile" class="w-full inline-flex items-center justify-center bg-brand-neon hover:bg-brand-neonHover text-brand-black font-extrabold text-sm uppercase tracking-wider py-3.5 rounded-full transition-all duration-200">
+          Aula Experimental
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================================================== -->
+    <!-- 2. HERO SECTION -->
+    <!-- ================================================== -->
+    <section id="inicio" class="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+      <!-- Background Gym Image with Fallback and Dark Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
+          alt="Academia moderna e sofisticada" 
+          class="w-full h-full object-cover object-center"
+          loading="eager"
+          onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1200&auto=format&fit=crop';"
+        >
+        <div class="absolute inset-0 hero-gradient"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 text-center">
+        <!-- Quiet Typographic Kicker (No static pill slop) -->
+        <p class="text-xs sm:text-sm font-semibold tracking-[0.22em] text-brand-gray uppercase mb-6">
+          ESTRUTURA COMPLETA <span class="text-brand-neon mx-1.5" aria-hidden="true">•</span> RESULTADOS REAIS
+        </p>
+
+        <!-- Main Title -->
+        <h1 class="font-display font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase leading-[1.05] mb-4 text-white">
+          SUPERE SEUS LIMITES.
+          <span class="block text-brand-neon font-display font-extrabold mt-1">TREINE NO SEU RITMO.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-brand-gray font-normal leading-relaxed mb-10">
+          Equipamentos profissionais, ambiente moderno e tudo o que você precisa para transformar sua rotina.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+          <a href="#" data-cta="hero-primary" class="w-full sm:w-auto inline-flex items-center justify-center bg-brand-neon hover:bg-brand-neonHover text-brand-black font-extrabold text-sm uppercase tracking-wider px-8 py-4 rounded-full transition-all duration-200">
+            Começar Agora
+          </a>
+          <a href="#sobre" class="w-full sm:w-auto inline-flex items-center justify-center border border-white/20 hover:border-white/50 text-white font-semibold text-sm uppercase tracking-wider px-8 py-4 rounded-full transition-all duration-200 hover:bg-white/5">
+            Conhecer a Smart Gym
+          </a>
+        </div>
+
+        <!-- Muted Indicator Below -->
+        <p class="text-xs sm:text-sm text-brand-gray flex items-center justify-center gap-2">
+          <svg class="w-4 h-4 text-brand-neon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Agende uma aula experimental gratuita.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 3. SOBRE / DIFERENCIAIS -->
+    <!-- ================================================== -->
+    <section id="sobre" class="py-24 sm:py-32 bg-brand-black border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Image Column (Left) -->
+          <div class="lg:col-span-6 relative">
+            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-brand-surface aspect-[4/3] sm:aspect-[16/11]">
+              <img 
+                src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1200&auto=format&fit=crop" 
+                alt="Ambiente e aparelhos da Smart Gym" 
+                class="w-full h-full object-cover"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop';"
+              >
+            </div>
+          </div>
+
+          <!-- Content Column (Right) -->
+          <div class="lg:col-span-6">
+            <span class="text-xs font-semibold uppercase tracking-widest text-brand-neon mb-3 block">
+              Quem Somos
+            </span>
+            <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-white mb-5 leading-tight">
+              MAIS QUE UMA ACADEMIA.
+            </h2>
+            <p class="text-base text-brand-gray leading-relaxed mb-10 max-w-xl">
+              Na Smart Gym, você encontra estrutura, orientação e um ambiente preparado para ajudar você a evoluir todos os dias.
+            </p>
+
+            <!-- 3 Differentials (Clean, Minimalist, No Giant Slop Cards) -->
+            <div class="space-y-6">
+              
+              <!-- Item 01 -->
+              <div class="flex items-start gap-5">
+                <span class="font-display font-bold text-brand-neon text-lg sm:text-xl pt-0.5">
+                  01
+                </span>
+                <div>
+                  <h3 class="text-white font-bold text-base sm:text-lg uppercase tracking-wide mb-1">
+                    Equipamentos Profissionais
+                  </h3>
+                  <p class="text-brand-gray text-sm leading-relaxed">
+                    Estrutura completa para diferentes objetivos.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 02 -->
+              <div class="flex items-start gap-5">
+                <span class="font-display font-bold text-brand-neon text-lg sm:text-xl pt-0.5">
+                  02
+                </span>
+                <div>
+                  <h3 class="text-white font-bold text-base sm:text-lg uppercase tracking-wide mb-1">
+                    Ambiente Moderno
+                  </h3>
+                  <p class="text-brand-gray text-sm leading-relaxed">
+                    Espaço confortável, organizado e climatizado.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Item 03 -->
+              <div class="flex items-start gap-5">
+                <span class="font-display font-bold text-brand-neon text-lg sm:text-xl pt-0.5">
+                  03
+                </span>
+                <div>
+                  <h3 class="text-white font-bold text-base sm:text-lg uppercase tracking-wide mb-1">
+                    Acompanhamento
+                  </h3>
+                  <p class="text-brand-gray text-sm leading-relaxed">
+                    Suporte para você treinar com mais segurança e consistência.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 4. MODALIDADES -->
+    <!-- ================================================== -->
+    <section id="modalidades" class="py-24 sm:py-32 bg-brand-surface border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        
+        <!-- Section Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-white mb-3">
+            TREINE DO SEU JEITO.
+          </h2>
+          <p class="text-base text-brand-gray">
+            Escolha a modalidade que combina com seus objetivos.
+          </p>
+        </div>
+
+        <!-- 4 Minimalist Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Card 1: Musculação -->
+          <div class="card-hover group relative bg-brand-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+            <div class="relative h-56 sm:h-64 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=1000&auto=format&fit=crop" 
+                alt="Treino de Musculação" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop';"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/40 to-transparent"></div>
+            </div>
+            <div class="p-6 pt-2 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-lg sm:text-xl uppercase text-white mb-2 tracking-wide">
+                  Musculação
+                </h3>
+                <p class="text-brand-gray text-sm leading-relaxed">
+                  Força, hipertrofia e condicionamento.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Funcional -->
+          <div class="card-hover group relative bg-brand-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+            <div class="relative h-56 sm:h-64 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop" 
+                alt="Treino Funcional" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop';"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/40 to-transparent"></div>
+            </div>
+            <div class="p-6 pt-2 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-lg sm:text-xl uppercase text-white mb-2 tracking-wide">
+                  Funcional
+                </h3>
+                <p class="text-brand-gray text-sm leading-relaxed">
+                  Movimento, resistência e mobilidade.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Cross Training -->
+          <div class="card-hover group relative bg-brand-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+            <div class="relative h-56 sm:h-64 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?q=80&w=1000&auto=format&fit=crop" 
+                alt="Cross Training" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop';"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/40 to-transparent"></div>
+            </div>
+            <div class="p-6 pt-2 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-lg sm:text-xl uppercase text-white mb-2 tracking-wide">
+                  Cross Training
+                </h3>
+                <p class="text-brand-gray text-sm leading-relaxed">
+                  Treinos intensos para quem busca evolução.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Personal Trainer -->
+          <div class="card-hover group relative bg-brand-card rounded-2xl border border-white/10 overflow-hidden flex flex-col">
+            <div class="relative h-56 sm:h-64 overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1000&auto=format&fit=crop" 
+                alt="Acompanhamento com Personal Trainer" 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop';"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-card via-brand-card/40 to-transparent"></div>
+            </div>
+            <div class="p-6 pt-2 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 class="font-display font-bold text-lg sm:text-xl uppercase text-white mb-2 tracking-wide">
+                  Personal Trainer
+                </h3>
+                <p class="text-brand-gray text-sm leading-relaxed">
+                  Acompanhamento individualizado.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 5. PLANOS -->
+    <!-- ================================================== -->
+    <section id="planos" class="py-24 sm:py-32 bg-brand-black border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8">
+        
+        <!-- Header -->
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl uppercase tracking-tight text-white mb-3">
+            ESCOLHA SEU PLANO.
+          </h2>
+          <p class="text-base text-brand-gray">
+            Planos flexíveis para diferentes objetivos.
+          </p>
+        </div>
+
+        <!-- 3 Plans Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
+          
+          <!-- Plano 1: Mensal -->
+          <div class="bg-brand-surface rounded-2xl p-8 sm:p-9 border border-white/10 flex flex-col justify-between">
+            <div>
+              <h3 class="font-display font-bold text-xl uppercase tracking-wide text-white mb-4">
+                Plano Mensal
+              </h3>
+              
+              <div class="flex items-baseline gap-1 mb-8">
+                <span class="text-base font-semibold text-brand-gray">R$</span>
+                <span class="text-4xl sm:text-5xl font-extrabold text-white font-display">119</span>
+                <span class="text-sm font-medium text-brand-gray">/mês</span>
+              </div>
+
+              <ul class="space-y-4 mb-8 text-sm text-brand-gray">
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-neon shrink-0"></span>
+                  <span>Acesso à musculação</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-neon shrink-0"></span>
+                  <span>Horários flexíveis</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-neon shrink-0"></span>
+                  <span>Sem fidelidade</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" data-plan="mensal" class="w-full inline-flex items-center justify-center border border-white/20 hover:border-white text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl transition-all duration-200 hover:bg-white/5">
+              Quero Esse Plano
+            </a>
+          </div>
+
+          <!-- Plano 2: Anual (Featured - Mais Escolhido) -->
+          <div class="bg-brand-card rounded-2xl p-8 sm:p-9 border-2 border-brand-neon flex flex-col justify-between relative shadow-xl shadow-brand-neon/5 lg:-translate-y-2">
+            <!-- Selo Mais Escolhido -->
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-neon text-brand-black text-[11px] font-extrabold tracking-widest uppercase px-3.5 py-1 rounded-full shadow">
+              Mais Escolhido
+            </div>
+
+            <div>
+              <h3 class="font-display font-bold text-xl uppercase tracking-wide text-white mb-4">
+                Plano Anual
+              </h3>
+              
+              <div class="flex items-baseline gap-1 mb-8">
+                <span class="text-base font-semibold text-brand-gray">R$</span>
+                <span class="text-4xl sm:text-5xl font-extrabold text-brand-neon font-display">79</span>
+                <span class="text-sm font-medium text-brand-gray">/mês</span>
+              </div>
+
+              <ul class="space-y-4 mb-8 text-sm text-white">
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-brand-neon shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Acesso completo</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-brand-neon shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Avaliação física</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-brand-neon shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span>Todas as modalidades</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <svg class="w-4 h-4 text-brand-neon shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="font-semibold text-brand-neon">Melhor custo-benefício</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" data-plan="anual" class="w-full inline-flex items-center justify-center bg-brand-neon hover:bg-brand-neonHover text-brand-black font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl transition-all duration-200">
+              Quero Esse Plano
+            </a>
+          </div>
+
+          <!-- Plano 3: Semestral -->
+          <div class="bg-brand-surface rounded-2xl p-8 sm:p-9 border border-white/10 flex flex-col justify-between">
+            <div>
+              <h3 class="font-display font-bold text-xl uppercase tracking-wide text-white mb-4">
+                Plano Semestral
+              </h3>
+              
+              <div class="flex items-baseline gap-1 mb-8">
+                <span class="text-base font-semibold text-brand-gray">R$</span>
+                <span class="text-4xl sm:text-5xl font-extrabold text-white font-display">99</span>
+                <span class="text-sm font-medium text-brand-gray">/mês</span>
+              </div>
+
+              <ul class="space-y-4 mb-8 text-sm text-brand-gray">
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-neon shrink-0"></span>
+                  <span>Acesso à musculação</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-neon shrink-0"></span>
+                  <span>Avaliação física</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-neon shrink-0"></span>
+                  <span>Horários flexíveis</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" data-plan="semestral" class="w-full inline-flex items-center justify-center border border-white/20 hover:border-white text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl transition-all duration-200 hover:bg-white/5">
+              Quero Esse Plano
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================== -->
+    <!-- 6. CTA FINAL + CONTATO (Ultra Clean, Direct Conversion) -->
+    <!-- ================================================== -->
+    <section id="contato" class="py-24 sm:py-32 bg-brand-surface border-t border-white/5 relative">
+      <div class="max-w-4xl mx-auto px-5 sm:px-8 text-center">
+        
+        <h2 class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight text-white mb-4">
+          PRONTO PARA COMEÇAR?
+        </h2>
+        
+        <p class="text-base sm:text-lg text-brand-gray max-w-xl mx-auto mb-10 leading-relaxed">
+          Agende sua aula experimental e conheça a Smart Gym.
+        </p>
+
+        <!-- Big WhatsApp CTA -->
+        <div class="mb-14">
+          <a href="#" data-cta="final" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-brand-neon hover:bg-brand-neonHover text-brand-black font-extrabold text-sm uppercase tracking-wider px-10 py-5 rounded-full transition-all duration-200">
+            <!-- WhatsApp SVG Icon -->
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Agendar pelo WhatsApp
+          </a>
+        </div>
+
+        <!-- Essential Local & Operational Information -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-10 border-t border-white/5 text-left">
+          
+          <div class="flex items-start gap-3.5">
+            <span class="text-brand-neon pt-0.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs uppercase font-semibold text-brand-gray tracking-wider mb-0.5">Endereço</p>
+              <p class="text-sm font-medium text-white" data-config="ADDRESS">Av. Principal, 1000 - Centro</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5">
+            <span class="text-brand-neon pt-0.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs uppercase font-semibold text-brand-gray tracking-wider mb-0.5">Telefone</p>
+              <p class="text-sm font-medium text-white" data-config="PHONE">(00) 00000-0000</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5">
+            <span class="text-brand-neon pt-0.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs uppercase font-semibold text-brand-gray tracking-wider mb-0.5">Segunda a Sexta</p>
+              <p class="text-sm font-medium text-white" data-config="HOURS_WEEKDAY">05h às 23h</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5">
+            <span class="text-brand-neon pt-0.5">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs uppercase font-semibold text-brand-gray tracking-wider mb-0.5">Sábados</p>
+              <p class="text-sm font-medium text-white" data-config="HOURS_SATURDAY">08h às 18h</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ================================================== -->
+  <!-- 7. FOOTER (Simple, Clean, Brand Identity) -->
+  <!-- ================================================== -->
+  <footer class="py-12 bg-brand-black border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-white/5">
+        
+        <!-- Logo & Slogan -->
+        <div class="text-center md:text-left">
+          <span class="font-display font-extrabold text-xl tracking-wider uppercase text-white block mb-1" data-config="ACADEMY_NAME">
+            SMART GYM
+          </span>
+          <p class="text-xs text-brand-gray tracking-wide" data-config="SLOGAN">
+            Seu treino. Seu ritmo. Seu resultado.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <nav class="flex flex-wrap justify-center gap-6 text-xs font-semibold uppercase tracking-wider text-brand-gray" aria-label="Links do Rodapé">
+          <a href="#inicio" class="hover:text-white transition-colors">Início</a>
+          <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+          <a href="#modalidades" class="hover:text-white transition-colors">Modalidades</a>
+          <a href="#planos" class="hover:text-white transition-colors">Planos</a>
+          <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+        </nav>
+
+        <!-- Social Channels -->
+        <div class="flex items-center gap-4">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" data-config-link="INSTAGRAM_URL" class="text-brand-gray hover:text-brand-neon transition-colors p-2" aria-label="Instagram da Academia">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" data-cta="footer-whatsapp" class="text-brand-gray hover:text-brand-neon transition-colors p-2" aria-label="WhatsApp da Academia">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-8 text-center text-xs text-brand-muted">
+        <p>© 2026 Smart Gym. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================== -->
+  <!-- FLOATING QUICK WHATSAPP BUTTON (High Conversion) -->
+  <!-- ================================================== -->
+  <a href="#" data-cta="floating-whatsapp" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-brand-neon hover:bg-brand-neonHover text-brand-black rounded-full flex items-center justify-center shadow-lg transition-transform duration-200 hover:scale-105 active:scale-95" aria-label="Falar no WhatsApp">
+    <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <!-- ================================================== -->
+  <!-- JAVASCRIPT: REUSABLE CONSTANTS & INTERACTIONS -->
+  <!-- ================================================== -->
+  <script>
+    /**
+     * CONFIGURAÇÕES DO CLIENTE (Facilidade para reutilizar este modelo)
+     * Altere aqui os dados da academia para atualizar automaticamente toda a página.
+     */
+    const CONFIG = {
+      ACADEMY_NAME: "SMART GYM",
+      SLOGAN: "Seu treino. Seu ritmo. Seu resultado.",
+      WHATSAPP_NUMBER: "5500000000000", // Formato internacional sem espaços ou símbolos (Ex: 5511999999999)
+      PHONE: "(00) 00000-0000",
+      ADDRESS: "Av. Principal, 1000 - Centro",
+      HOURS_WEEKDAY: "Seg a Sex: 05h às 23h",
+      HOURS_SATURDAY: "Sábados: 08h às 18h",
+      INSTAGRAM_URL: "https://instagram.com"
+    };
+
+    // Função utilitária para gerar links do WhatsApp
+    function getWhatsAppLink(message) {
+      return `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
+
+    // Inicialização da página
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Injeta os dados da configuração nas tags com data-config
+      document.querySelectorAll('[data-config]').forEach(el => {
+        const key = el.getAttribute('data-config');
+        if (CONFIG[key]) {
+          el.textContent = CONFIG[key];
+        }
+      });
+
+      // Injeta links configurados
+      document.querySelectorAll('[data-config-link]').forEach(el => {
+        const key = el.getAttribute('data-config-link');
+        if (CONFIG[key]) {
+          el.setAttribute('href', CONFIG[key]);
+        }
+      });
+
+      // 2. Configura todos os CTAs para o WhatsApp com mensagens contextualizadas
+      const defaultExpMsg = `Olá! Quero agendar uma aula experimental na ${CONFIG.ACADEMY_NAME}.`;
+      
+      const ctaMap = {
+        'header': defaultExpMsg,
+        'header-mobile': defaultExpMsg,
+        'hero-primary': `Olá! Gostaria de começar a treinar na ${CONFIG.ACADEMY_NAME}.`,
+        'final': defaultExpMsg,
+        'floating-whatsapp': `Olá! Vim pelo site da ${CONFIG.ACADEMY_NAME} e gostaria de mais informações.`,
+        'footer-whatsapp': `Olá! Vim pelo site da ${CONFIG.ACADEMY_NAME} e gostaria de mais informações.`
+      };
+
+      Object.entries(ctaMap).forEach(([ctaKey, msg]) => {
+        document.querySelectorAll(`[data-cta="${ctaKey}"]`).forEach(btn => {
+          btn.setAttribute('href', getWhatsAppLink(msg));
+          btn.setAttribute('target', '_blank');
+          btn.setAttribute('rel', 'noopener noreferrer');
+        });
+      });
+
+      // Links dos Planos
+      const planMap = {
+        'mensal': `Olá! Tenho interesse no Plano Mensal da ${CONFIG.ACADEMY_NAME}.`,
+        'anual': `Olá! Tenho interesse no Plano Anual da ${CONFIG.ACADEMY_NAME}.`,
+        'semestral': `Olá! Tenho interesse no Plano Semestral da ${CONFIG.ACADEMY_NAME}.`
+      };
+
+      Object.entries(planMap).forEach(([planKey, msg]) => {
+        document.querySelectorAll(`[data-plan="${planKey}"]`).forEach(btn => {
+          btn.setAttribute('href', getWhatsAppLink(msg));
+          btn.setAttribute('target', '_blank');
+          btn.setAttribute('rel', 'noopener noreferrer');
+        });
+      });
+
+      // 3. Efeito no Header ao rolar a página
+      const header = document.getElementById('mainHeader');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+          header.classList.add('bg-brand-black/95', 'shadow-lg');
+          header.classList.remove('bg-brand-black/80');
+        } else {
+          header.classList.add('bg-brand-black/80');
+          header.classList.remove('bg-brand-black/95', 'shadow-lg');
+        }
+      }, { passive: true });
+
+      // 4. Mobile Menu Drawer
+      const mobileToggle = document.getElementById('mobileToggle');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+      const menuIcon = document.getElementById('menuIcon');
+      const closeIcon = document.getElementById('closeIcon');
+
+      function toggleMenu(show) {
+        const isHidden = mobileDrawer.classList.contains('hidden');
+        const shouldShow = typeof show === 'boolean' ? show : isHidden;
+
+        if (shouldShow) {
+          mobileDrawer.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          mobileToggle.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileDrawer.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+      }
+
+      mobileToggle.addEventListener('click', () => toggleMenu());
+
+      // Fechar menu mobile ao clicar em qualquer link de navegação
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => toggleMenu(false));
+      });
+    });
+  </script>
+</body>
+</html>
